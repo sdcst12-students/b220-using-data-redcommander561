@@ -18,174 +18,184 @@ What comes next?
 You will be using a while or for loop to generate multiple data entries to store in a list that we will eventually be writing to a file in JSON format so that we can open and decode it later.
 """
 
-
 import random
 
 
-print("roll the dice to determine your actions: ")
+DM = 0
+
 for i in range(1):
-    d1 = random.randint(1,6)
-    d2 = random.randint(1,6)
-
-    roll = d1 + d2
-
-    print(f"you rolled {d1} and {d2}! your total is {roll}")
+    rollSize = random.randint(2,12)
+    rollAtmosphere = random.randint(2,12)
+    rollHydrographics = random.randint(2,12)
+    rollPopulation = random.randint(2,12)
+    rollGovlvl = random.randint(2,12)
+    rollLawlvl = random.randint(2,12)
+    rollTechlvl = random.randint(1,6)
+    
 
     starport = random.choice("ABCDEX")
-    print(f"starport: {starport}")
+    print(f"Starport: {starport}")
 
-    if starport == "C" or  starport == "D" or  starport =="E" or  starport== "X":
-        print("naval base: skip")
+    if starport == "C" or starport == "D" or starport == "E" or starport == "X":
+        print("Naval Base: skip")
 
     else:
         NB = random.choice("nnnnnnyyyyy")
-        if NB =="n":
-            print("Naval base: no")
+
+            
+        if NB == "n":
+            print("Naval Base: No")
         if NB == "y":
-            print("Naval base: yes")
+            print("Naval Base: Yes")
     
-    SB = random.choice("nnnnnnyyyyy")
-    if SB =="n":
-        print("Scout base: no")
+
+    SB = random.choice("nnnnnyyyyyy")
+    if SB == "n":
+        print("Scout Base: No")
     if SB == "y":
-        print("Scout base: yes")
-
+        print("Scout Base: Yes")
     if starport == "C":
-        DM = roll -1
-        print(f"dice modification: {DM}")
+        DM = -1
+        print(f"Dice modification: {DM}")
     if starport == "B":
-        DM = roll -2
-        print(f"dice modification: {DM}")
+        DM = -2
+        print(f"Dice modification: {DM}")
     if starport == "A":
-        DM = roll -3
-        print(f"dice modification: {DM} ")
+        DM = -3
+        print(f"Dice modification: {DM}")
+    
 
-    GSG = random.choice("yyyyyyyynnn")
-    if GSG =="n":
-        print("Gas Giant: no")
-    if GSG == "y":
-        print("Gas Giant: yes")
+    GasG = random.choice("yyyyyyyynnn")
+    if GasG == "n":
+        print("Gas Giant: No")
+    if GasG == "y":
+        print("Gas Giant: Yes")
 
-    PT = random.choice("yyyyynnnnnn")
-    if PT == "n":
-        print("Planetoids: no")
-    if PT == "y":
-        print("Planetoids: yes ")
+    
+    Planetoids = random.choice("yyyyynnnnnn")
+    if Planetoids == "n":
+        print("Planetoids: No")
+    if Planetoids == "y":
+        print("Planetoids: Yes")  
 
-    A = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    B = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    C = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    D = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    E = random.choice("1234567890901903284803445")
 
-    name = A + B + C + D + E 
-    print(f"world name: {name}")
+    a = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789")
+    b = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789")
+    c = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789")
+    d = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789")
+    e = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789")
+    name = a + b + c + d + e
+    print(f"World Name: {name}")
 
-    size = roll-2
+    size = (rollSize -2) + DM
     print(f"Size: {size}")
-
+    
     atmosphere = 0
-
+    
     if size == 0:
-        atmosphere = 0 
+        atmosphere = 0
         print(f"Atmosphere: {atmosphere}")
-    else:
-        atmosphere = roll - 7
-        atmosphere = atmosphere + size
+
+    else: 
+        atmosphere = rollAtmosphere-7
+        atmosphere = (atmosphere + size) + DM
         print(f"Atmosphere: {atmosphere}")
+        if atmosphere == -1:
+            DM = -4
 
     hydrographics = 0
     if size == -1:
-        hydrographics = 0
-
+            hydrographics = 0
     else:
-        hydrographics = (roll - 7) + size
+        hydrographics = ((rollHydrographics -7) + size) + DM
         print(f"Hydrographics: {hydrographics}")
-    
-    population = roll - 2
+        
+    population = (rollPopulation - 2) + DM
     print(f"Population: {population}")
 
-    gov = (roll - 7) + population
-    print(f"Government level: {gov}")
+    govLvl = ((rollGovlvl - 7) + population) + DM
+    print(f"Government Level: {govLvl}")
 
-    law = (roll - 7) + gov
-    print(f"Law level: {law}")
+    lawLvl = ((rollLawlvl -7) + govLvl) + DM
+    print(f"Law Level: {lawLvl}")
+
     MOD = 0
-     
-    if size == 0:
-       MOD = MOD + 2
-    if atmosphere == 0:
-       MOD = MOD + 1 
-    if gov == 0:
-       MOD = MOD + 1
 
+    if size == 0:
+        MOD = MOD + 2
+    if atmosphere == 0:
+        MOD = MOD + 1
+    if govLvl == 0:
+        MOD = MOD + 1
+    
     if size == 1:
-       MOD = MOD + 2
+        MOD = MOD + 2
     if atmosphere == 1:
-       MOD = MOD + 1 
+        MOD = MOD + 1
     if population == 1:
-       MOD = MOD + 1
+        MOD = MOD + 1
 
     if size == 2:
-       MOD = MOD + 1
+        MOD = MOD + 1
     if atmosphere == 2:
-       MOD = MOD + 1 
+        MOD = MOD + 1
     if population == 2:
-       MOD = MOD + 1
+        MOD = MOD + 1
 
     if size == 3:
-       MOD = MOD + 1
+        MOD = MOD + 1
     if atmosphere == 3:
-       MOD = MOD + 1 
+        MOD = MOD + 1
     if population == 3:
-       MOD = MOD + 1
+        MOD = MOD + 1
 
     if size == 4:
-        MOD =  MOD + 1
+        MOD = MOD + 1
     if population == 4:
-       MOD = MOD + 1    
-    
+        MOD = MOD + 1
+
     if population == 5:
-       MOD = MOD + 1
-    if gov == 5:
-       MOD = MOD + 1
-    
+        MOD = MOD + 1
+    if govLvl == 5:
+        MOD = MOD + 1
+
     if hydrographics == 9:
-      MOD =  MOD + 1
+        MOD = MOD + 1
     if population == 9:
-      MOD =  MOD + 2 
-    
+        MOD = MOD + 2
+
     if starport == "A":
-      MOD =  MOD + 6
+        MOD = MOD + 6
     if atmosphere == 10:
-       MOD = MOD + 1
+        MOD = MOD + 1
     if hydrographics == 10:
-       MOD = MOD + 2
+        MOD = MOD + 2
     if population == 10:
-       MOD = MOD + 4
-    
+        MOD = MOD + 4
+
     if starport == "B":
-      MOD =  MOD + 4
+        MOD = MOD + 4
     if atmosphere == 11:
-       MOD = MOD + 1
-    
+        MOD = MOD + 1
+
     if starport == "C":
-       MOD = MOD + 2
+        MOD = MOD + 2
     if atmosphere == 12:
-       MOD = MOD +1
+        MOD = MOD + 1
     
     if atmosphere == 13:
-       MOD = MOD + 1
-    if gov == 13:
-       MOD = MOD - 2
-    
-    if atmosphere == 14:
-       MOD = MOD + 1
-    
-    if starport == "X":
-       MOD = MOD -4
-    
-    print(f"Mod: {MOD}")
+        MOD = MOD + 1
+    if govLvl == 13:
+        MOD = MOD - 2
 
-    tech = d1 + MOD
-    print(f"Tech Level: {tech}")
+    if atmosphere == 14:
+        MOD = MOD + 1
+
+    if starport == "X":
+        MOD = MOD - 4
+     
+
+    techLvl = (rollTechlvl + MOD) + DM
+    print(f"Tech Level: {techLvl}")
+    
+    print(DM)
