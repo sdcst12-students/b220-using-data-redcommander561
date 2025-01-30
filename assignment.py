@@ -3,7 +3,7 @@
 * check for naval base
 * check for scout base
 * check for gas giant
-* generate a random name ( you can use a random set of numbers or create a library of words/letters.  The name of the system in the Alien movie franchise, fore example, was LV427)
+* generate a random name ( you can use a random set of numbers or create a library of words/letters.  The name of the system in the Alien movie franchise, for example, was LV427)
 * skip step 4 (no travel zone code needed)
 * generate size, atmosphere, hydrographics, population, government level, law level and tech level
 * note that there are modifiers to your generated values based on some of your previous values
@@ -54,12 +54,9 @@ class starsystem:
     def roll_size(self):
         self.size = random.randint(2, 12)
         
-
     def roll_atmosphere(self):
         self.atmosphere = random.randint(2, 12)
         
-
-
     def roll_hydro(self):
         self.hydrographics = random.randint(2, 12)
 
@@ -95,7 +92,6 @@ class starsystem:
         else:
             print(f"Scout Base: No")
         
-
     def gen_name(self):
         a = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         b = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -108,36 +104,40 @@ class starsystem:
     def calculate_world_attributes(self):
         self.size = (self.size - 2) + self.DM
         print(f"Size: {self.size}")
-
+        
+        if self.size < 0:
+            self.size = 0
+            print(f"Size: {self.size}")
+        
         if self.size == 0:
             self.atmosphere = 0
             print(f"Atmosphere: {self.atmosphere}")
-        elif self.atmosphere < 0:
-            self.atmosphere = 0
-            print(f"Atmosphere: 0")
         elif self.atmosphere > 0:
             self.atmosphere = (self.atmosphere - 7 + self.size) + self.DM
+            if self.atmosphere < 0:
+                self.atmosphere = 0
             print(f"Atmosphere: {self.atmosphere}")
-
-        if self.size == -1:
+        
+        if self.size == 0:
             self.hydrographics = 0
-            print(f"Hydrographics: 0")
+            print(f"Hydrographics: {self.hydrographics}")
         elif self.hydrographics > 0:
             self.hydrographics = ((self.hydrographics - 7) + self.size) + self.DM
+            if self.hydrographics < 0:
+                self.hydrographics = 0
             print(f"Hydrographics: {self.hydrographics}")
         
-        else:
-            self.hydrographics = 0
-            print(f"Hydrographics: 0")
-
         self.population = (self.population - 2) + self.DM
+        if self.population < 0:
+            self.population = 0
         print(f"Population: {self.population}")
-
-        self.govLvl = ((self.govLvl - 7) + self.population) + self.DM
+        
+        if self.govLvl >= 0:
+            self.govLvl = ((self.govLvl - 7) + self.population) + self.DM
+            if self.govLvl < 0:
+                self.govLvl = 0
         print(f"Government Level: {self.govLvl}")
-        if self.govLvl < 0:
-            self.govLvl = 0
-            print(f"Government Level: {self.govLvl}")
+        
         self.lawLvl = ((self.lawLvl - 7) + self.govLvl) + self.DM
         if self.lawLvl < 0:
             self.lawLvl = 0
@@ -222,7 +222,6 @@ class starsystem:
         self.techLvl = (self.techLvl + MOD) + self.DM
         print(f"Tech Level: {self.techLvl}")
         print(f"Dice Modification: {self.DM}")
-
 
 world = starsystem()
 world.gen_world()
