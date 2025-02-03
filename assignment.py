@@ -39,37 +39,31 @@ class starsystem:
         self.Planetoids = ""
     
     def gen_world(self):
-        self.roll_size()
-        self.roll_atmosphere()
-        self.roll_hydro()
-        self.roll_pop()
-        self.roll_gov()
-        self.roll_law()
-        self.roll_tech()
+        self.rolls()
         self.gen_starport()
         self.calculate_world_attributes()
         self.gen_name()
         self.mods()
 
-    def roll_size(self):
+    def rolls(self):
         self.size = random.randint(2, 12)
         
-    def roll_atmosphere(self):
+
         self.atmosphere = random.randint(2, 12)
         
-    def roll_hydro(self):
+    
         self.hydrographics = random.randint(2, 12)
 
-    def roll_pop(self):
+    
         self.population = random.randint(2, 12)
 
-    def roll_gov(self):
+   
         self.govLvl = random.randint(2, 12)
 
-    def roll_law(self):
+    
         self.lawLvl = random.randint(2, 12)
 
-    def roll_tech(self):
+    
         self.techLvl = random.randint(1, 6)
 
     def gen_starport(self):
@@ -95,10 +89,11 @@ class starsystem:
     def gen_name(self):
         a = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         b = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-        c = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789")
+        c = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        z = random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         d = random.choice("1234567890")
         e = random.choice("1234567890")
-        self.name = a + b + c + d + e 
+        self.name = a + b + c + z + d + e 
         print(f"World Name: {self.name}")
 
     def calculate_world_attributes(self):
