@@ -46,22 +46,22 @@ class starsystem:
         self.mods()
 
     def rolls(self):
-        self.size = random.randint(2, 12)
+        self.size = random.randint(1, 6) + random.randint(1, 6)
         
 
-        self.atmosphere = random.randint(2, 12)
+        self.atmosphere = random.randint(1, 6) + random.randint(1, 6)
         
     
-        self.hydrographics = random.randint(2, 12)
+        self.hydrographics = random.randint(1, 6) + random.randint(1, 6)
 
     
-        self.population = random.randint(2, 12)
+        self.population = random.randint(1, 6) + random.randint(1, 6)
 
    
-        self.govLvl = random.randint(2, 12)
+        self.govLvl = random.randint(1, 6) + random.randint(1, 6)
 
     
-        self.lawLvl = random.randint(2, 12)
+        self.lawLvl = random.randint(1, 6) + random.randint(1, 6)
 
     
         self.techLvl = random.randint(1, 6)
@@ -142,77 +142,77 @@ class starsystem:
         MOD = 0
 
         if self.size == 0:
-            MOD = 2
+            MOD =  MOD + 2
         if self.atmosphere == 0:
-            MOD = 1
+            MOD =  MOD + 1
         if self.govLvl == 0:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.size == 1:
-            MOD = 2
+            MOD = MOD + 2
         if self.atmosphere == 1:
-            MOD = 1
+            MOD = MOD + 1
         if self.population == 1:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.size == 2:
-            MOD = 1
+            MOD = MOD + 1
         if self.atmosphere == 2:
-            MOD = 1
+            MOD = MOD + 1
         if self.population == 2:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.size == 3:
-            MOD = 1
+            MOD = MOD + 1
         if self.atmosphere == 3:
-            MOD = 1
+            MOD = MOD + 1
         if self.population == 3:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.size == 4:
-            MOD = 1
+            MOD = MOD + 1
         if self.population == 4:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.population == 5:
-            MOD = 1
+            MOD = MOD + 1
         if self.govLvl == 5:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.hydrographics == 9:
-            MOD = 1
+            MOD = MOD + 1
         if self.population == 9:
-            MOD = 2
+            MOD = MOD + 2
 
         if self.starport == "A":
-            MOD = 6
+            MOD = MOD + 6
         if self.atmosphere == 10:
-            MOD = 1
+            MOD = MOD + 1
         if self.hydrographics == 10:
-            MOD = 2
+            MOD = MOD + 2
         if self.population == 10:
-            MOD = 4
+            MOD = MOD + 4
 
         if self.starport == "B":
-            MOD = 4
+            MOD = MOD + 4
         if self.atmosphere == 11:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.starport == "C":
-            MOD = 2
+            MOD = MOD + 2
         if self.atmosphere == 12:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.atmosphere == 13:
-            MOD = 1
+            MOD = MOD + 1
         if self.govLvl == 13:
-            MOD = 2
+            MOD = MOD + 2
 
         if self.atmosphere == 14:
-            MOD = 1
+            MOD = MOD + 1
 
         if self.starport == "X":
-            MOD = 4
+            MOD = MOD + 4
 
         self.techLvl = (self.techLvl + MOD) + self.DM
         print(f"Tech Level: {self.techLvl}")
