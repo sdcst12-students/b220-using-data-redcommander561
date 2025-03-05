@@ -13,14 +13,11 @@
 
 Assignment Expected Output
 Your program for today should generate a dictionary that stores the data you generate.
-
 What comes next?
 You will be using a while or for loop to generate multiple data entries to store in a list that we will eventually be writing to a file in JSON format so that we can open and decode it later.
 """
 
 import random
-
-
 class starsystem:
     def __init__(self):
         self.DM = 0
@@ -47,22 +44,16 @@ class starsystem:
 
     def rolls(self):
         self.size = random.randint(1, 6) + random.randint(1, 6)
-        
 
         self.atmosphere = random.randint(1, 6) + random.randint(1, 6)
         
-    
         self.hydrographics = random.randint(1, 6) + random.randint(1, 6)
 
-    
         self.population = random.randint(1, 6) + random.randint(1, 6)
 
-   
         self.govLvl = random.randint(1, 6) + random.randint(1, 6)
 
-    
         self.lawLvl = random.randint(1, 6) + random.randint(1, 6)
-
     
         self.techLvl = random.randint(1, 6)
 
@@ -218,6 +209,7 @@ class starsystem:
         print(f"Tech Level: {self.techLvl}")
         print(f"Dice Modification: {self.DM}")
 
-world = starsystem()
-world.gen_world()
-
+while True:
+    world = starsystem()
+    world.gen_world()
+    input()
